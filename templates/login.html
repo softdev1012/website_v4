@@ -1,0 +1,1312 @@
+<!--
+=========================================================
+* Argon Dashboard - v1.2.0
+=========================================================
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+
+* Copyright  Creative Tim (http://www.creative-tim.com)
+* Coded by www.creative-tim.com
+=========================================================
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+  <meta name="author" content="Sourcecode_Dev">
+  <title>TrakTheHerd</title>
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+
+</head>
+
+<body class="bg-default">
+  <!-- Navbar -->
+
+  <!-- Main content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header bg-gradient-gray py-4 py-lg-4 pt-lg-4">
+
+
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+          <img src="../assets/img/logo.png" class="container-fluid">
+        </svg>
+      </div>
+    </div>
+    <!-- Page content -->
+
+    <div class="container mb--8 pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-30 col-md-10">
+
+
+            <div class="nav-wrapper">
+                <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Symbol</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>Usernames</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
+                            <div class="card-body px-lg-30 py-lg-10">
+                                <div class="text-center text-muted mb-4">
+                                    <!--
+                                    <small>Sign in with credentials</small>
+                                    -->
+                                </div>
+                                <div class="container-fluid">
+                                    <div class="col-12 col-sm-12 col-lg-12 table-responsive">
+                                        <div>
+                                            <table id="symbolstable" class="table align-items-center">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col" class="sort" data-sort="name">
+                                                        <label for="symbolsearch">Symbol</label>
+                                                        <input id="symbolsearch" type="text" class="form-control" placeholder="">
+                                                    </th>
+                                                    <th scope="col" class="sort" data-sort="budget">
+
+                                                        <label for="maxminr">Times Used</label>
+                                                        <div class="input-group" id="maxminr">
+                                                            <input id="minnumid" type="text" placeholder="min" aria-label="First name" class="form-control">
+                                                            <input id="maxnumid" type="text" placeholder="max" aria-label="Last name" class="form-control">
+                                                        </div>
+
+
+                                                    </th>
+                                                    <th scope="col" class="sort" data-sort="status">
+
+                                                        <div class="">
+                                                            <label for="seldates">Date Sort</label>
+                                                            <select class="form-control" id="seldates">
+                                                                <option>1</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </th>
+                                                    <th scope="col">Start Popularity</th>
+                                                    <th scope="col">End Popularity</th>
+                                                    <th scope="col">Popularity Difference</th>
+                                                    <!--
+                                                    <th scope="col">Users</th>
+                                                    <th scope="col" class="sort" data-sort="completion">Completion</th>
+                                                    <th scope="col"></th>
+                                                    -->
+                                                </tr>
+                                                </thead>
+                                                <tbody id="wordlisttable" class="list">
+                                                <tr>
+                                                    <th scope="row">
+                                                        <div class="media align-items-center">
+                                                            <!--
+                                                            <a href="#" class="avatar rounded-circle mr-3">
+
+
+                                                                <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">
+
+
+                                                            </a>
+                                                            -->
+
+                                                            <div class="media-body">
+                                                                <span class="name mb-0 text-sm symbolname">TrakTheHerd</span>
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    <td class="budget timesusedname">
+                                                        15
+                                                    </td>
+                                                    <td>
+                                                        <span class="status datename">15/05/1980</span>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <button id="downloadbutton" class="btn btn-icon btn-primary" type="button">
+                                <span class="btn-inner--icon"><i class="ni ni-atom"></i> Download</span>
+                            </button>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+
+                            <div class="card-body px-lg-30 py-lg-10">
+                                <div class="text-center text-muted mb-4">
+                                    <!--
+                                    <small>Sign in with credentials</small>
+                                    -->
+                                </div>
+                                <div class="col-12 col-sm-12 col-lg-12 table-responsive">
+                                    <div>
+                                        <label for="passwordpass">Password:</label>
+                                        <input type="password" id="passwordpass">
+                                        <table id="usertable" class="table align-items-center">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th style="border: 1px solid black" scope="col" class="sort" data-sort="name">
+                                                    <label for="symbolusernamesearch">Symbol/Username</label>
+                                                    <input id="symbolusernamesearch" type="text" class="form-control" placeholder="">
+                                                </th>
+                                                <th style="border: 1px solid black" scope="col-sm-4 col-lg-4" class="sort" data-sort="budget">
+                                                    <label for="maxminradmin">Times Used</label>
+                                                    <div class="input-group" id="maxminradmin">
+                                                        <input value="0" id="minnumidadmin" type="text" placeholder="min" aria-label="First name" class="form-control">
+                                                        <input value="999" id="maxnumidadmin" type="text" placeholder="max" aria-label="Last name" class="form-control">
+                                                    </div>
+                                                </th>
+                                                <th style="border: 1px solid black" scope="col" class="sort" data-sort="status">
+
+                                                    <div class="">
+                                                        <label for="seldatesadmin">Date Sort</label>
+                                                        <select class="form-control" id="seldatesadmin">
+                                                            <option>Week</option>
+                                                            <option>Month</option>
+                                                            <option>Today</option>
+                                                        </select>
+                                                    </div>
+
+                                                </th>
+                                                <th scope="col" class="sort" data-sort="status">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <label for="ADMINGREEN">Administrators</label>
+                                                            <div class="col-sm-4"  id="ADMINGREEN">
+                                                                <label class="custom-toggle">
+                                                                    <input id="chk_green" type="checkbox" class="chk" value="green">
+                                                                    <span class="custom-toggle-slider rounded-circle"></span>
+                                                                </label>
+                                                            </div>
+                                                            <label for="ADMINRED">Professionals</label>
+                                                            <div class="col-sm-4" id="ADMINRED">
+                                                                <label class="custom-toggle">
+                                                                    <input type="checkbox" class="chk" value="red" id="chk_red">
+                                                                    <span class="custom-toggle-slider rounded-circle-danger"></span>
+                                                                </label>
+                                                            </div>
+                                                            <label for="ADMINORANGE">Veteranongr</label>
+                                                            <div class="col-sm-4" id="ADMINORANGE">
+                                                                <label class="custom-toggle">
+                                                                    <input type="checkbox" class="chk" value="orange" id="chk_orange">
+                                                                    <span class="custom-toggle-slider rounded-circle"></span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </th>
+                                                <!--
+                                                <th scope="col">Users</th>
+                                                <th scope="col" class="sort" data-sort="completion">Completion</th>
+                                                <th scope="col"></th>
+                                                -->
+                                            </tr>
+
+                                            </thead>
+
+                                            <tbody id="wordlisttableadmin" class="list">
+
+                                            <tr>
+                                                <th scope="row">
+                                                    <div class="media align-items-center">
+                                                        <!--
+                                                        <a href="#" class="avatar rounded-circle mr-3">
+
+
+                                                            <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">
+
+
+                                                        </a>
+                                                        -->
+
+                                                        <div class="media-body">
+                                                            <span class="name mb-0 text-sm symbolname">TrakTheHerd</span>
+                                                        </div>
+                                                    </div>
+                                                </th>
+                                                <td class="budget timesusedname">
+                                                    15
+                                                </td>
+                                                <td>
+                                                    <span class="status datename">15/05/1980</span>
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <button id="downloadbuttonadmin" class="btn btn-icon btn-primary" type="button">
+                                <span class="btn-inner--icon"><i class="ni ni-atom"></i> Download</span>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card bg-secondary border-0 mb-0">
+            <!--
+            <div class="card-header bg-transparent pb-5">
+              <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
+              <div class="btn-wrapper text-center">
+                <a href="#" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--icon"><img src="../assets/img/icons/common/github.svg"></span>
+                  <span class="btn-inner--text">Github</span>
+                </a>
+                <a href="#" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--icon"><img src="../assets/img/icons/common/google.svg"></span>
+                  <span class="btn-inner--text">Google</span>
+                </a>
+              </div>
+            </div>
+            -->
+
+          </div>
+
+          <div class="row mt-3">
+
+            <div class="col-6">
+              <a href="#" class="text-light"><small>.</small></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+
+  <!-- Argon Scripts -->
+  <!-- Core -->
+  <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <!-- Argon JS -->
+  <script src="../assets/js/argon.js?v=1.2.0"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+  <!-- Moi JS -->
+  <script>
+    var getUrlParameter = function getUrlParameter(sParam) {
+      var sPageURL = window.location.search.substring(1),
+              sURLVariables = sPageURL.split('&'),
+              sParameterName,
+              i;
+
+      for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+          return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+      }
+    };
+    let pinfo = [];
+
+    function docReady(fn) {
+        // see if DOM is already available
+        if (document.readyState === "complete" || document.readyState === "interactive") {
+            // call on next available tick
+            setTimeout(fn, 1);
+        } else {
+            document.addEventListener("DOMContentLoaded", fn);
+        }
+    }
+    $('#seldates option').remove();
+    let updatefunc = window.setInterval(function () {
+        gertablefirst();
+        getadminpanel();
+    },30000);
+
+    $("#loginbut1").on('click',function (e) {
+      e.preventDefault();
+      let user = $("#email1").val();
+      let passq = $("#pass1").val();
+      let tok = getUrlParameter('token');
+      console.log([user,passq]);
+      $.ajax({
+        url : '/start?email='+user+'&pass='+passq+'&token='+tok,
+        type : 'GET',
+        success : function(data) {
+          //console.log('Data: '+);
+          //console.log('Data: '+);
+          //console.log(data);
+          window.location.replace(data);
+        },
+        error : function(request,error)
+        {
+          console.log(request);
+          console.log(error);
+        }
+      });
+    });
+    $("#symbolsearch").on("keyup", function() {
+        var value = $(this).val();
+        clearInterval(updatefunc);
+        $("#symbolstable tr").each(function(index) {
+            if (index !== 0) {
+                $row = $(this);
+                var $tdElement = $row.find("th");
+                var id = $tdElement.text().trim();
+                //console.log(id);
+                var matchedIndex = id.indexOf(value);
+                if (matchedIndex != 0) {
+                    $row.hide();
+                    updatefunc = window.setInterval(function () {
+                        $.ajax({
+                            url : '/api?action=update2',
+                            type : 'GET',
+                            success : function(data) {
+                                //console.log('Data: '+);
+                                //console.log('Data: '+);
+                                //console.log(data);
+                                //console.log(data);
+                                let dinfo = data['success'];
+                                let currdate = $('#seldates').val();
+                                var i;
+                                for (i = 0; i < data['totalkeys'].length; ++i) {
+                                    // do something with `substr[i]`
+                                    let cuserinfo = data['totalkeys'][i];
+                                    if(pinfo.includes(cuserinfo)===false){
+                                        $('#seldates').append('<option>' + cuserinfo + '</option>');
+                                        pinfo.push(cuserinfo);
+                                    }
+                                }
+                                //$('#seldates').append('<option>ALL</option>');
+
+                                $("#wordlisttable tr").remove();
+                                var i;
+                                for (i = 0; i < dinfo.length; ++i) {
+                                    // do something with `substr[i]`
+                                    let cuserinfo = dinfo[i];
+
+                                    if(cuserinfo[2]===currdate){
+                                        $('#wordlisttable').append('' +
+                                            '<tr>\n' +
+                                            '        <th scope="row">\n' +
+                                            '         <div class="media align-items-center">\n' +
+                                            '          <!--\n' +
+                                            '          <a href="#" class="avatar rounded-circle mr-3">\n' +
+                                            '\n' +
+                                            '\n' +
+                                            '           <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">\n' +
+                                            '\n' +
+                                            '\n' +
+                                            '          </a>\n' +
+                                            '          -->\n' +
+                                            '\n' +
+                                            '          <div class="media-body">\n' +
+                                            '           <span class="name mb-0 text-sm symbolname">'+cuserinfo[0]+'</span>\n' +
+                                            '          </div>\n' +
+                                            '         </div>\n' +
+                                            '        </th>\n' +
+                                            '        <td class="budget timesusedname">\n' +
+                                            '          '+cuserinfo[1]+'\n' +
+                                            '        </td>\n' +
+                                            '        <td>\n' +
+                                            '         <span class="status datename">'+cuserinfo[2]+'</span>\n' +
+                                            '        </td>\n' +
+                                            '\n' +
+                                            '\n' +
+                                            '       </tr>')
+                                    }
+                                    else if(cuserinfo[2]==='ALL'){
+                                        $('#wordlisttable').append('' +
+                                            '<tr>\n' +
+                                            '        <th scope="row">\n' +
+                                            '         <div class="media align-items-center">\n' +
+                                            '          <!--\n' +
+                                            '          <a href="#" class="avatar rounded-circle mr-3">\n' +
+                                            '\n' +
+                                            '\n' +
+                                            '           <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">\n' +
+                                            '\n' +
+                                            '\n' +
+                                            '          </a>\n' +
+                                            '          -->\n' +
+                                            '\n' +
+                                            '          <div class="media-body">\n' +
+                                            '           <span class="name mb-0 text-sm symbolname">'+cuserinfo[0]+'</span>\n' +
+                                            '          </div>\n' +
+                                            '         </div>\n' +
+                                            '        </th>\n' +
+                                            '        <td class="budget timesusedname">\n' +
+                                            '          '+cuserinfo[1]+'\n' +
+                                            '        </td>\n' +
+                                            '        <td>\n' +
+                                            '         <span class="status datename">'+cuserinfo[2]+'</span>\n' +
+                                            '        </td>\n' +
+                                            '\n' +
+                                            '\n' +
+                                            '       </tr>')
+                                    }
+                                    else{
+
+                                    }
+                                    //console.log(cuserinfo);
+                                }},
+                            error : function(request,error)
+                            {
+                                console.log(request);
+                                console.log(error);
+                            }
+                        });
+                    },30000);
+                }
+                else {
+                    //addHighlighting($tdElement, value);
+                    $row.show();
+                }
+            }})});
+
+    const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+
+    const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
+            v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+    )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+
+    // do the work...
+    document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+        const table = th.closest('table');
+        Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+            .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+            .forEach(tr => table.appendChild(tr) );
+    })));
+
+    function getXPath( element ) {
+        var xpath = '';
+        for ( ; element && element.nodeType == 1; element = element.parentNode )
+        {
+            var id = $(element.parentNode).children(element.tagName).index(element) + 1;
+            id > 1 ? (id = '[' + id + ']') : (id = '');
+            xpath = '/' + element.tagName.toLowerCase() + id + xpath;
+        }
+        return xpath;
+    }
+    function getadminpanel(){
+
+        let userpass = $('#passwordpass').val();
+
+
+        let inf1 = $('#seldatesadmin').val();
+        let inf2 = $('#symbolusernamesearch').val();
+
+        if(inf1==='Today'){
+            inf1 = '1'
+        }else if(inf1==='Week'){
+            inf1 = '2'
+        }else if(inf1==='Month'){
+            inf1 = '3'
+        }
+
+        let useroles = [];
+        $('.chk').each(function () {
+            var id = $(this).attr('id');
+            if ($('#' + id).is(':checked')) {
+                useroles.push($('#'+id).attr('value'));
+            }
+        });
+        //console.log(useroles);
+        $("#wordlisttableadmin tr").remove();
+        let minnum = $('#minnumidadmin').val();
+        let maxnum = $('#maxnumidadmin').val();
+        //console.log('&filterminmax='+minnum+','+maxnum);
+
+        $.ajax({
+            url : '/api?action=adminupdate&userpass='+userpass+'&checktime='+inf1+'&searching='+inf2+'&roles='+useroles.join(',')+'&filterminmax='+minnum+','+maxnum,
+            type : 'GET',
+            success : function (data) {
+                let dinfo = data['success'][2];
+                let justuse = data['success'][3];
+                for (i = 0; i < dinfo.length; ++i){
+                    let dinfo2 = dinfo[i]['total'];
+                    console.log(dinfo2);
+                    for (j=0; j< dinfo2.length;++j){
+                        if(justuse.includes(dinfo2[j][0])===true){
+                            $('#wordlisttableadmin').append('' +
+                                '<tr>\n' +
+                                '                                                <th scope="row">\n' +
+                                '                                                    <div class="media align-items-center">\n' +
+                                '                                                        <!--\n' +
+                                '                                                        <a href="#" class="avatar rounded-circle mr-3">\n' +
+                                '\n' +
+                                '\n' +
+                                '                                                            <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">\n' +
+                                '\n' +
+                                '\n' +
+                                '                                                        </a>\n' +
+                                '                                                        -->\n' +
+                                '\n' +
+                                '                                                        <div class="media-body">\n' +
+                                '                                                            <span class="name mb-0 text-sm symbolname">'+dinfo[i]['username']+'</span></a>\n' +
+                                '                                                        </div>\n' +
+                                '                                                    </div>\n' +
+                                '                                                </th>\n' +
+                                '                                                <td class="budget timesusedname">\n' +
+                                '                                                    <a href="https://robintrack.net/symbol/'+dinfo2[j][0]+'" >'+dinfo2[j][0]+'\n</a> '+
+                                '                                                </td>' +'<td class="budget timesusedname">\n' +
+                                '                                                    '+dinfo2[j][1]+'\n' +
+                                '                                                </td>' +
+                                //'                                                <td><a href="/api?action=adminupdate&checktime='+inf1+'&searching='+dinfo[i][1]+'&roles='+useroles.join(',')+'&filterminmax=' + minnum +','+maxnum+'"><button type="button" class="btn btn-success">Usernames/Date</button></a>'+
+                                //'                                                </td>' +
+                                '                                            </tr>');
+                        }
+                    }
+                }
+                $('#downloadbuttonadmin').attr('fpa',data['success'][4]);
+            },
+            error : function(request,error)
+            {
+                console.log(request);
+                console.log(error);
+            }
+        });
+    }
+    function gertablefirst(){
+        $.ajax({
+            url : '/api?action=update2',
+            type : 'GET',
+            success : function(data) {
+                //console.log('Data: '+);
+                //console.log('Data: '+);
+                //console.log(data);
+                //console.log(data);
+                let dinfo = data['success'];
+                let currdate = $('#seldates').val();
+                var i;
+                for (i = 0; i < data['totalkeys'].length; ++i) {
+                    // do something with `substr[i]`
+                    let cuserinfo = data['totalkeys'][i];
+                    if(pinfo.includes(cuserinfo)===false){
+                        $('#seldates').append('<option>' + cuserinfo + '</option>');
+                        pinfo.push(cuserinfo);
+                    }
+                }
+                //$('#seldates').append('<option>ALL</option>');
+                $("#wordlisttable tr").remove();
+                var i;
+                for (i = 0; i < dinfo.length; ++i) {
+                    // do something with `substr[i]`
+                    let cuserinfo = dinfo[i][0];
+                    let cuserinfo10 = dinfo[i][1];
+                    let populate_color = cuserinfo10[2];
+                    let popocol = '';
+
+                    if(String(populate_color).includes('-')===true){
+                        popocol = '<td style="color: red">'+cuserinfo10[2]+'</td>';
+                    }else{
+                        popocol = '<td style="color: #0a5d00">'+cuserinfo10[2]+'</td>';
+                    }
+
+                    console.log(popocol);
+
+                    if(cuserinfo[2]===currdate){
+                        $('#wordlisttable').append('' +
+                            '<tr>\n' +
+                            '        <th scope="row">\n' +
+                            '         <div class="media align-items-center">\n' +
+                            '          <!--\n' +
+                            '          <a href="#" class="avatar rounded-circle mr-3">\n' +
+                            '\n' +
+                            '\n' +
+                            '           <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">\n' +
+                            '\n' +
+                            '\n' +
+                            '          </a>\n' +
+                            '          -->\n' +
+                            '\n' +
+                            '          <div class="media-body">\n' +
+                            '           <span class="name mb-0 text-sm symbolname">'+cuserinfo[0]+'</span>\n' +
+                            '          </div>\n' +
+                            '         </div>\n' +
+                            '        </th>\n'+
+                            '        <td class="budget timesusedname">\n' +
+                            '          '+cuserinfo[1]+'\n' +
+                            '        </td>\n' +
+                            '        <td>\n' +'<td>'+cuserinfo10[0]+'</td>'+'<td>'+cuserinfo10[1]+'</td>'+'<td>'+popocol+'</td>'+
+                            '         <span class="status datename">'+cuserinfo[2]+'</span>\n' +
+                            '        </td>\n' +
+                            '\n' +
+                            '\n' +
+                            '       </tr>')
+                    }
+                    else if(cuserinfo[2]==='ALL'){
+                        $('#wordlisttable').append('' +
+                            '<tr>\n' +
+                            '        <th scope="row">\n' +
+                            '         <div class="media align-items-center">\n' +
+                            '          <!--\n' +
+                            '          <a href="#" class="avatar rounded-circle mr-3">\n' +
+                            '\n' +
+                            '\n' +
+                            '           <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">\n' +
+                            '\n' +
+                            '\n' +
+                            '          </a>\n' +
+                            '          -->\n' +
+                            '\n' +
+                            '          <div class="media-body">\n' +
+                            '           <span class="name mb-0 text-sm symbolname">'+cuserinfo[0]+'</span>\n' +
+                            '          </div>\n' +
+                            '         </div>\n' +
+                            '        </th>\n' +
+                            '        <td class="budget timesusedname">\n' +
+                            '          '+cuserinfo[1]+'\n' +
+                            '        </td>\n' +
+                            '        <td>\n' +
+                            '         <span class="status datename">'+cuserinfo[2]+'</span>\n' +
+                            '        </td>\n' +
+                            '\n' +
+                            '\n' +
+                            '       </tr>')
+                    }
+                    else{
+
+                    }
+                    //console.log(cuserinfo);
+                }},
+            error : function(request,error)
+            {
+                console.log(request);
+                console.log(error);
+            }
+        });
+    }
+    let cssPath = function(el) {
+        if (!(el instanceof Element))
+            return;
+        var path = [];
+        while (el.nodeType === Node.ELEMENT_NODE) {
+            var selector = el.nodeName.toLowerCase();
+            if (el.id) {
+                selector += '#' + el.id;
+                path.unshift(selector);
+                break;
+            } else {
+                var sib = el, nth = 1;
+                while (sib = sib.previousElementSibling) {
+                    if (sib.nodeName.toLowerCase() == selector)
+                        nth++;
+                }
+                if (nth != 1)
+                    selector += ":nth-of-type("+nth+")";
+            }
+            path.unshift(selector);
+            el = el.parentNode;
+        }
+        return path.join(" > ");
+    };
+
+    $('#minnumid').change(function () {
+        let minu = $('#minnumid').val();
+        clearInterval(updatefunc);
+
+        var priceEls = document.getElementsByClassName("timesusedname");
+        for (var i = 0; i < priceEls.length; i++){
+            let elem = cssPath(priceEls[i]);//$(getXPath(priceEls[i]));
+            let psed1 = elem.split(' > td')[0];
+            let elem2 = document.querySelector(psed1);
+            //elem2.parentNode.children(elem2);
+            elem2.style.display = "";
+        }
+
+        for (var i = 0; i < priceEls.length; i++) {
+            var price = priceEls[i].innerText;
+            console.log([parseInt(minu),parseInt(price)]);
+            if(parseInt(minu)<parseInt(price)){
+                //alert(price);
+                //good
+            }else if(parseInt(minu)>parseInt(price)){
+
+                let elem = cssPath(priceEls[i]);//$(getXPath(priceEls[i]));
+                let psed1 = elem.split(' > td')[0];
+                let elem2 = document.querySelector(psed1);
+                //elem2.parentNode.children(elem2);
+                elem2.style.display = "none";
+                //$(elem).setAttribute("hidden", true);
+                //console.log(elem);
+                //elem.parentNode.removeChild(elem);
+                //#let ok5 = getPathTo(priceEls[i]).split('/');
+                //$('#wordlisttable '+ ok5[1]).remove();
+                //priceEls[i];
+            }
+        }
+
+        updatefunc = window.setInterval(function () {
+            $.ajax({
+                url : '/api?action=update2',
+                type : 'GET',
+                success : function(data) {
+                    //console.log('Data: '+);
+                    //console.log('Data: '+);
+                    //console.log(data);
+                    //console.log(data);
+                    let dinfo = data['success'];
+                    let currdate = $('#seldates').val();
+                    var i;
+                    for (i = 0; i < data['totalkeys'].length; ++i) {
+                        // do something with `substr[i]`
+                        let cuserinfo = data['totalkeys'][i];
+                        if(pinfo.includes(cuserinfo)===false){
+                            $('#seldates').append('<option>' + cuserinfo + '</option>');
+                            pinfo.push(cuserinfo);
+                        }
+                    }
+                    //$('#seldates').append('<option>ALL</option>');
+
+                    $("#wordlisttable tr").remove();
+                    var i;
+                    for (i = 0; i < dinfo.length; ++i) {
+                        // do something with `substr[i]`
+                        let cuserinfo = dinfo[i];
+
+                        if(cuserinfo[2]===currdate){
+                            $('#wordlisttable').append('' +
+                                '<tr>\n' +
+                                '        <th scope="row">\n' +
+                                '         <div class="media align-items-center">\n' +
+                                '          <!--\n' +
+                                '          <a href="#" class="avatar rounded-circle mr-3">\n' +
+                                '\n' +
+                                '\n' +
+                                '           <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">\n' +
+                                '\n' +
+                                '\n' +
+                                '          </a>\n' +
+                                '          -->\n' +
+                                '\n' +
+                                '          <div class="media-body">\n' +
+                                '           <span class="name mb-0 text-sm symbolname">'+cuserinfo[0]+'</span>\n' +
+                                '          </div>\n' +
+                                '         </div>\n' +
+                                '        </th>\n' +
+                                '        <td class="budget timesusedname">\n' +
+                                '          '+cuserinfo[1]+'\n' +
+                                '        </td>\n' +
+                                '        <td>\n' +
+                                '         <span class="status datename">'+cuserinfo[2]+'</span>\n' +
+                                '        </td>\n' +
+                                '\n' +
+                                '\n' +
+                                '       </tr>')
+                        }
+                        else if(cuserinfo[2]==='ALL'){
+                            $('#wordlisttable').append('' +
+                                '<tr>\n' +
+                                '        <th scope="row">\n' +
+                                '         <div class="media align-items-center">\n' +
+                                '          <!--\n' +
+                                '          <a href="#" class="avatar rounded-circle mr-3">\n' +
+                                '\n' +
+                                '\n' +
+                                '           <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">\n' +
+                                '\n' +
+                                '\n' +
+                                '          </a>\n' +
+                                '          -->\n' +
+                                '\n' +
+                                '          <div class="media-body">\n' +
+                                '           <span class="name mb-0 text-sm symbolname">'+cuserinfo[0]+'</span>\n' +
+                                '          </div>\n' +
+                                '         </div>\n' +
+                                '        </th>\n' +
+                                '        <td class="budget timesusedname">\n' +
+                                '          '+cuserinfo[1]+'\n' +
+                                '        </td>\n' +
+                                '        <td>\n' +
+                                '         <span class="status datename">'+cuserinfo[2]+'</span>\n' +
+                                '        </td>\n' +
+                                '\n' +
+                                '\n' +
+                                '       </tr>')
+                        }
+                        else{
+
+                        }
+                        //console.log(cuserinfo);
+                    }},
+                error : function(request,error)
+                {
+                    console.log(request);
+                    console.log(error);
+                }
+            });
+        },30000);
+
+        //console.log(ok);
+          //let numb = $(this).val();
+        /*
+        clearInterval(updatefunc);
+        var i;
+        for (i = 0; i < ok.length; ++i) {
+            // do something with `substr[i]`
+            let cuserinfo = ok[i];
+            console.log(cuserinfo);
+        }
+              updatefunc = window.setInterval(function () {
+                  $.ajax({
+                      url : '/api?action=update2',
+                      type : 'GET',
+                      success : function(data) {
+                          //console.log('Data: '+);
+                          //console.log('Data: '+);
+                          //console.log(data);
+                          //console.log(data);
+                          let dinfo = data['success'];
+                          let currdate = $('#seldates').val();
+                          var i;
+                          for (i = 0; i < data['totalkeys'].length; ++i) {
+                              // do something with `substr[i]`
+                              let cuserinfo = data['totalkeys'][i];
+                              if(pinfo.includes(cuserinfo)===false){
+                                  $('#seldates').append('<option>' + cuserinfo + '</option>');
+                                  pinfo.push(cuserinfo);
+                              }
+                          }
+                          //$('#seldates').append('<option>ALL</option>');
+
+                          $("#wordlisttable tr").remove();
+                          var i;
+                          for (i = 0; i < dinfo.length; ++i) {
+                              // do something with `substr[i]`
+                              let cuserinfo = dinfo[i];
+
+                              if(cuserinfo[2]===currdate){
+                                  $('#wordlisttable').append('' +
+                                      '<tr>\n' +
+                                      '        <th scope="row">\n' +
+                                      '         <div class="media align-items-center">\n' +
+                                      '          <!--\n' +
+                                      '          <a href="#" class="avatar rounded-circle mr-3">\n' +
+                                      '\n' +
+                                      '\n' +
+                                      '           <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">\n' +
+                                      '\n' +
+                                      '\n' +
+                                      '          </a>\n' +
+                                      '          -->\n' +
+                                      '\n' +
+                                      '          <div class="media-body">\n' +
+                                      '           <span class="name mb-0 text-sm symbolname">'+cuserinfo[0]+'</span>\n' +
+                                      '          </div>\n' +
+                                      '         </div>\n' +
+                                      '        </th>\n' +
+                                      '        <td class="budget timesusedname">\n' +
+                                      '          '+cuserinfo[1]+'\n' +
+                                      '        </td>\n' +
+                                      '        <td>\n' +
+                                      '         <span class="status datename">'+cuserinfo[2]+'</span>\n' +
+                                      '        </td>\n' +
+                                      '\n' +
+                                      '\n' +
+                                      '       </tr>')
+                              }
+                              else if(cuserinfo[2]==='ALL'){
+                                  $('#wordlisttable').append('' +
+                                      '<tr>\n' +
+                                      '        <th scope="row">\n' +
+                                      '         <div class="media align-items-center">\n' +
+                                      '          <!--\n' +
+                                      '          <a href="#" class="avatar rounded-circle mr-3">\n' +
+                                      '\n' +
+                                      '\n' +
+                                      '           <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">\n' +
+                                      '\n' +
+                                      '\n' +
+                                      '          </a>\n' +
+                                      '          -->\n' +
+                                      '\n' +
+                                      '          <div class="media-body">\n' +
+                                      '           <span class="name mb-0 text-sm symbolname">'+cuserinfo[0]+'</span>\n' +
+                                      '          </div>\n' +
+                                      '         </div>\n' +
+                                      '        </th>\n' +
+                                      '        <td class="budget timesusedname">\n' +
+                                      '          '+cuserinfo[1]+'\n' +
+                                      '        </td>\n' +
+                                      '        <td>\n' +
+                                      '         <span class="status datename">'+cuserinfo[2]+'</span>\n' +
+                                      '        </td>\n' +
+                                      '\n' +
+                                      '\n' +
+                                      '       </tr>')
+                              }
+                              else{
+
+                              }
+                              //console.log(cuserinfo);
+                          }},
+                      error : function(request,error)
+                      {
+                          console.log(request);
+                          console.log(error);
+                      }
+                  });
+              },30000);
+
+         */
+      });
+    $('#maxnumid').change(function () {
+        let numb1 = $(this).val();
+        let minu = $('#minnumid').val();
+        clearInterval(updatefunc);
+        var priceEls = document.getElementsByClassName("timesusedname");
+        for (var i = 0; i < priceEls.length; i++){
+            let elem = cssPath(priceEls[i]);//$(getXPath(priceEls[i]));
+            let psed1 = elem.split(' > td')[0];
+            let elem2 = document.querySelector(psed1);
+            //elem2.parentNode.children(elem2);
+            elem2.style.display = "";
+        }
+
+        for (var i = 0; i < priceEls.length; i++) {
+            var price = priceEls[i].innerText;
+            console.log([parseInt(minu),parseInt(price)]);
+            if(parseInt(minu)<parseInt(price)){
+                //alert(price);
+                //good
+            }else if(parseInt(minu)>parseInt(price)){
+
+                let elem = cssPath(priceEls[i]);//$(getXPath(priceEls[i]));
+                let psed1 = elem.split(' > td')[0];
+                let elem2 = document.querySelector(psed1);
+                //elem2.parentNode.children(elem2);
+                elem2.style.display = "none";
+                //$(elem).setAttribute("hidden", true);
+                //console.log(elem);
+                //elem.parentNode.removeChild(elem);
+                //#let ok5 = getPathTo(priceEls[i]).split('/');
+                //$('#wordlisttable '+ ok5[1]).remove();
+                //priceEls[i];
+            }
+        }
+
+        for (var i = 0; i < priceEls.length; i++) {
+            var price = priceEls[i].innerText;
+            //console.log([parseInt(minu),parseInt(price)]);
+            if(parseInt(price)>parseInt(numb1)){
+                let elem = cssPath(priceEls[i]);//$(getXPath(priceEls[i]));
+                let psed1 = elem.split(' > td')[0];
+                let elem2 = document.querySelector(psed1);
+                elem2.style.display = "none";
+            }
+
+        }
+
+        /*
+        $(".").each(function(index) {
+            if (index !== 0) {
+                $row = $(this);
+                var $tdElement = $row.find('td')[0].innerText;
+                if ($tdElement < numb1) {
+                    $row.show();
+                    //console.log($tdElement);
+
+                } else {
+                    console.log($tdElement);
+                    $row.hide();
+                }
+            }
+            updatefunc = window.setInterval(function () {
+                $.ajax({
+                    url : '/api?action=update2',
+                    type : 'GET',
+                    success : function(data) {
+                        //console.log('Data: '+);
+                        //console.log('Data: '+);
+                        //console.log(data);
+                        //console.log(data);
+                        let dinfo = data['success'];
+                        let currdate = $('#seldates').val();
+                        var i;
+                        for (i = 0; i < data['totalkeys'].length; ++i) {
+                            // do something with `substr[i]`
+                            let cuserinfo = data['totalkeys'][i];
+                            if(pinfo.includes(cuserinfo)===false){
+                                $('#seldates').append('<option>' + cuserinfo + '</option>');
+                                pinfo.push(cuserinfo);
+                            }
+                        }
+                        //$('#seldates').append('<option>ALL</option>');
+
+                        $("#wordlisttable tr").remove();
+                        var i;
+                        for (i = 0; i < dinfo.length; ++i) {
+                            // do something with `substr[i]`
+                            let cuserinfo = dinfo[i];
+
+                            if(cuserinfo[2]===currdate){
+                                $('#wordlisttable').append('' +
+                                    '<tr>\n' +
+                                    '        <th scope="row">\n' +
+                                    '         <div class="media align-items-center">\n' +
+                                    '          <!--\n' +
+                                    '          <a href="#" class="avatar rounded-circle mr-3">\n' +
+                                    '\n' +
+                                    '\n' +
+                                    '           <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">\n' +
+                                    '\n' +
+                                    '\n' +
+                                    '          </a>\n' +
+                                    '          -->\n' +
+                                    '\n' +
+                                    '          <div class="media-body">\n' +
+                                    '           <span class="name mb-0 text-sm symbolname">'+cuserinfo[0]+'</span>\n' +
+                                    '          </div>\n' +
+                                    '         </div>\n' +
+                                    '        </th>\n' +
+                                    '        <td class="budget timesusedname">\n' +
+                                    '          '+cuserinfo[1]+'\n' +
+                                    '        </td>\n' +
+                                    '        <td>\n' +
+                                    '         <span class="status datename">'+cuserinfo[2]+'</span>\n' +
+                                    '        </td>\n' +
+                                    '\n' +
+                                    '\n' +
+                                    '       </tr>')
+                            }
+                            else if(cuserinfo[2]==='ALL'){
+                                $('#wordlisttable').append('' +
+                                    '<tr>\n' +
+                                    '        <th scope="row">\n' +
+                                    '         <div class="media align-items-center">\n' +
+                                    '          <!--\n' +
+                                    '          <a href="#" class="avatar rounded-circle mr-3">\n' +
+                                    '\n' +
+                                    '\n' +
+                                    '           <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">\n' +
+                                    '\n' +
+                                    '\n' +
+                                    '          </a>\n' +
+                                    '          -->\n' +
+                                    '\n' +
+                                    '          <div class="media-body">\n' +
+                                    '           <span class="name mb-0 text-sm symbolname">'+cuserinfo[0]+'</span>\n' +
+                                    '          </div>\n' +
+                                    '         </div>\n' +
+                                    '        </th>\n' +
+                                    '        <td class="budget timesusedname">\n' +
+                                    '          '+cuserinfo[1]+'\n' +
+                                    '        </td>\n' +
+                                    '        <td>\n' +
+                                    '         <span class="status datename">'+cuserinfo[2]+'</span>\n' +
+                                    '        </td>\n' +
+                                    '\n' +
+                                    '\n' +
+                                    '       </tr>')
+                            }
+                            else{
+
+                            }
+                            //console.log(cuserinfo);
+                        }},
+                    error : function(request,error)
+                    {
+                        console.log(request);
+                        console.log(error);
+                    }
+                });
+            },30000);
+        })
+         */
+
+        updatefunc = window.setInterval(function () {
+            $.ajax({
+                url : '/api?action=update2',
+                type : 'GET',
+                success : function(data) {
+                    //console.log('Data: '+);
+                    //console.log('Data: '+);
+                    //console.log(data);
+                    //console.log(data);
+                    let dinfo = data['success'];
+                    let currdate = $('#seldates').val();
+                    var i;
+                    for (i = 0; i < data['totalkeys'].length; ++i) {
+                        // do something with `substr[i]`
+                        let cuserinfo = data['totalkeys'][i];
+                        if(pinfo.includes(cuserinfo)===false){
+                            $('#seldates').append('<option>' + cuserinfo + '</option>');
+                            pinfo.push(cuserinfo);
+                        }
+                    }
+                    //$('#seldates').append('<option>ALL</option>');
+
+                    $("#wordlisttable tr").remove();
+                    var i;
+                    for (i = 0; i < dinfo.length; ++i) {
+                        // do something with `substr[i]`
+                        let cuserinfo = dinfo[i];
+
+                        if(cuserinfo[2]===currdate){
+                            $('#wordlisttable').append('' +
+                                '<tr>\n' +
+                                '        <th scope="row">\n' +
+                                '         <div class="media align-items-center">\n' +
+                                '          <!--\n' +
+                                '          <a href="#" class="avatar rounded-circle mr-3">\n' +
+                                '\n' +
+                                '\n' +
+                                '           <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">\n' +
+                                '\n' +
+                                '\n' +
+                                '          </a>\n' +
+                                '          -->\n' +
+                                '\n' +
+                                '          <div class="media-body">\n' +
+                                '           <span class="name mb-0 text-sm symbolname">'+cuserinfo[0]+'</span>\n' +
+                                '          </div>\n' +
+                                '         </div>\n' +
+                                '        </th>\n' +
+                                '        <td class="budget timesusedname">\n' +
+                                '          '+cuserinfo[1]+'\n' +
+                                '        </td>\n' +
+                                '        <td>\n' +
+                                '         <span class="status datename">'+cuserinfo[2]+'</span>\n' +
+                                '        </td>\n' +
+                                '\n' +
+                                '\n' +
+                                '       </tr>')
+                        }
+                        else if(cuserinfo[2]==='ALL'){
+                            $('#wordlisttable').append('' +
+                                '<tr>\n' +
+                                '        <th scope="row">\n' +
+                                '         <div class="media align-items-center">\n' +
+                                '          <!--\n' +
+                                '          <a href="#" class="avatar rounded-circle mr-3">\n' +
+                                '\n' +
+                                '\n' +
+                                '           <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">\n' +
+                                '\n' +
+                                '\n' +
+                                '          </a>\n' +
+                                '          -->\n' +
+                                '\n' +
+                                '          <div class="media-body">\n' +
+                                '           <span class="name mb-0 text-sm symbolname">'+cuserinfo[0]+'</span>\n' +
+                                '          </div>\n' +
+                                '         </div>\n' +
+                                '        </th>\n' +
+                                '        <td class="budget timesusedname">\n' +
+                                '          '+cuserinfo[1]+'\n' +
+                                '        </td>\n' +
+                                '        <td>\n' +
+                                '         <span class="status datename">'+cuserinfo[2]+'</span>\n' +
+                                '        </td>\n' +
+                                '\n' +
+                                '\n' +
+                                '       </tr>')
+                        }
+                        else{
+
+                        }
+                        //console.log(cuserinfo);
+                    }},
+                error : function(request,error)
+                {
+                    console.log(request);
+                    console.log(error);
+                }
+            });
+        },30000);
+
+    });
+
+    $('#downloadbutton').on('click',function () {
+        let infoparsed1 = [];
+        var priceEls = $('#symbolstable tr');
+        for (var i = 1; i < priceEls.length; i++){
+            if(priceEls[i].getAttribute('style')===null){
+                let info1 = priceEls[i].innerText.split('\n');
+                let info2 = info1[1].split('\t');
+                let naem1 = info1[0];
+                let vusadas = info2[1];
+                let fech = info2[2];
+                infoparsed1.push([naem1,vusadas,fech]);
+            }
+            //let elem = cssPath(priceEls[i]);//$(getXPath(priceEls[i]));
+            //let psed1 = elem.split(' > td')[0];
+            //#console.log(psed1);
+            //let elem2 = document.querySelector(psed1);
+            //if(elem2.getAttribute('style')===null){
+            //    alert(elem2);
+            //}
+
+    }console.log(infoparsed1);
+        let person = {'data':infoparsed1};
+
+        $.ajax({
+            url : '/api',
+            type : 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            success:function(data){
+                window.open('/api?action=downloadfile&filename='+data['success'], '_blank');
+            },
+            data: JSON.stringify(person)
+        });
+    });
+    $('#symbolusernamesearch').change(function () {
+        getadminpanel();
+    });
+    $('#downloadbuttonadmin').on('click',function () {
+        let pat2 = $('#downloadbuttonadmin').attr('fpa');
+        window.open('/api?action=ddownload&path=' + pat2, '_blank');
+    });
+    $('#passwordpass').change(function () {
+        getadminpanel();
+    });
+
+    docReady(function() {
+        window.setTimeout(function () {
+            gertablefirst();
+            gertablefirst();
+
+
+        },2000);
+        window.setTimeout(function () {
+
+            getadminpanel();
+            getadminpanel();
+        },3000);
+    });
+
+  </script>
+</body>
+
+</html>

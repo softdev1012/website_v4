@@ -1,0 +1,426 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Sourcecode_Dev">
+    <title>@polarcoding on IG</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+</head>
+
+<script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<!-- Argon JS -->
+<script src="../assets/js/argon.js?v=1.2.0"></script>
+
+<link href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css" rel="stylesheet">
+<script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/export/bootstrap-table-export.min.js"></script>
+<script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<div class="nav-wrapper">
+    <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
+
+        <li class="nav-item">
+            <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>MyFreeCams</a>
+        </li>
+
+        <li class="nav-item ctb_view" >
+            <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>Chaturbate</a>
+        </li>
+
+    </ul>
+</div>
+<div class="card shadow">
+    <div class="card-body">
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
+                <div class="toolbar2">
+                    <label for="add_model_username_id">Add new model</label>
+                    <div id="add_model_username_id" class="input-group" style="width: 80%">
+                        <input id="addmodel_username" type="text" class="form-control" placeholder="Username">
+                        <input id="addmodel_password" type="text" class="form-control" placeholder="Proxies IP:PORT,IP:PORT">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="button" id="button-addon2">Add +</button>
+                        </div>
+                    </div>
+                    <br>
+                    <label for="m_connection">Max Connections Per IP</label>
+                    <input id="m_connection" type="text" class="form-control" placeholder="Max connections per IP" value="1" style="width: 10%">
+                    <br>
+                    <label for="m_liveseconds">Max live time in seconds</label>
+                    <input id="m_liveseconds" type="text" class="form-control" placeholder="Live Seconds XXP" value="60" style="width: 10%">
+                    <!--<label for="add_model_proxie_id">Add proxie to Model</label>
+                    <div id="add_model_proxie_id" class="input-group" style="width: 50%">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="" aria-label="Checkbox for following text input" >
+                                <select></select>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Text input with checkbox">
+                    </div>-->
+                </div>
+                <br>
+                <table id="usertable" class="table align-items-center"
+                       data-search="true"
+                       data-pagination="true"
+                       data-show-columns="true"
+                       data-toolbar=".toolbar2"
+                       data-show-refresh="true"
+                       data-auto-refresh="true"
+
+                >
+
+                    <thead class="thead-light">
+                    <tr>
+                        <th data-field="model_username" scope="col" class="sort">
+                            Model Username
+                        </th>
+                        <th data-field="status" scope="col" class="sort" data-sortable="true" data-order='desc'>
+                            Status
+                        </th>
+                        <th data-field="proxies" scope="col" class="sort" data-formatter="selectFormatter">
+                            Used Proxies
+                        </th>
+                        <th data-field="working_proxies" scope="col" class="sort">
+                            Woking Proxies
+                        </th>
+                        <th data-field="current_viewers" scope="col" class="sort">Current Viewers</th>
+                        <th data-field="actions" scope="col" class="sort" data-formatter="selectFormatter2">
+                            Actions
+                        </th>
+                    </tr>
+
+                    </thead>
+                    <!--<tbody id="wordlisttableadmin" class="list">
+                    <td>moiisam model</td>
+                    <td>active</td>
+                    <td><input class="form-control" type="text" value="qlqwa:aquies,HOST:PORT,YEAH1:PORT2"></td>
+                    <td>PLAY,STOP,REMOVE</td>
+                    </tbody>-->
+
+                </table>
+            </div>
+
+            <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+                <div class="toolbar3">
+
+                    <label for="add_model_username_id_CTB">Add new model</label>
+                    <div id="add_model_username_id_CTB" class="input-group" style="width: 80%">
+                        <input id="addmodel_username_CTB" type="text" class="form-control" placeholder="Username">
+                        <input id="addmodel_password_CTB" type="text" class="form-control" placeholder="Proxies IP:PORT,IP:PORT">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="button" id="button-addon2_CTB">Add +</button>
+                        </div>
+                    </div>
+                    <br>
+                    <label for="m_connection_CTB">Max Connections Per IP</label>
+                    <input id="m_connection_CTB" type="text" class="form-control" placeholder="Max connections per IP" value="1" style="width: 10%">
+                    <br>
+                    <label for="m_liveseconds_CTB">Max live time in seconds</label>
+                    <input id="m_liveseconds_CTB" type="text" class="form-control" placeholder="Live Seconds XXP" value="60" style="width: 10%">
+
+                    <!--<label for="add_model_proxie_id">Add proxie to Model</label>
+                    <div id="add_model_proxie_id" class="input-group" style="width: 50%">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="" aria-label="Checkbox for following text input" >
+                                <select></select>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Text input with checkbox">
+                    </div>-->
+                </div>
+                <br>
+
+                <table id="usertable2" class="table align-items-center"
+                       data-search="true"
+                       data-pagination="true"
+                       data-show-columns="true"
+                       data-toolbar=".toolbar3"
+                >
+
+                    <thead class="thead-light">
+                    <tr>
+                        <th data-field="model_username" scope="col" class="sort">
+                            Model Username
+                        </th>
+                        <th data-field="status" scope="col" class="sort" data-sortable="true" data-order='desc'>
+                            Status
+                        </th>
+                        <th data-field="proxies" scope="col" class="sort" data-formatter="selectFormatter_ctb">
+                            Used Proxies
+                        </th>
+                        <th data-field="working_proxies" scope="col" class="sort">
+                            Woking Proxies
+                        </th>
+                        <th data-field="current_viewers" scope="col" class="sort">Current Viewers</th>
+                        <th data-field="actions" scope="col" class="sort" data-formatter="selectFormatter2_ctb">
+                            Actions
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .alertbox {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+</style>
+<div class="alertbox" id="alertbox_id_div">
+
+
+
+
+
+    <!--<div class="alert alert-default alert-dismissible fade show" role="alert">
+        <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+        <span class="alert-text"><strong>Default!</strong> This is a default alert—check it out!</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="alert alert-default alert-dismissible fade show" role="alert">
+        <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+        <span class="alert-text"><strong>Default!</strong> This is a default alert—check it out!</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    -->
+
+</div>
+<script>
+    let fused = 0;
+    let fused_ctb = 0;
+    let $table = $('#usertable');
+    let $table_ctb = $('#usertable2');
+
+    function selectFormatter(value,row,index) {
+        return '<div class="ctner" style="display: flex;justify-content: space-between;width: 100%;">' +
+            '<input class="form-control proxie_control" segtype="'+row.model_username+'" type="text" value="'+value+'"><a target="_blank" href="/api?action=clear_proxies&web=mfc&model_username='+row.model_username+'"><i class="fas fa-times-circle" style="height: 30px;width: auto;"></i></a>'+
+            '</div>'
+    }
+    function selectFormatter_ctb(value,row,index) {
+        return '<div class="ctner" style="display: flex;justify-content: space-between;width: 100%;">' +
+            '<input class="form-control proxie_control2" segtype="'+row.model_username+'" type="text" value="'+value+'"><a target="_blank" href="/api?action=clear_proxies&web=ctb&model_username='+row.model_username+'"><i class="fas fa-times-circle" style="height: 30px;width: auto;"></i></a>'+
+            '</div>'
+    }
+
+    function selectFormatter2(value,row,index) {
+        return '<div><a target="_blank" href="/api?action=start_model&web=mfc&model_username='+value+'"><i class="fa fa-play-circle" aria-hidden="true"></i></a><a target="_blank" href="/api?action=stop_model&web=mfc&model_username='+value+'"><i class="fa fa-stop-circle" aria-hidden="true"></i></a>  <a target="_blank" href="/api?action=delete_model&webs=mfc&model_username='+value+'"><i class="fa fa-ban" aria-hidden="true"></i></a></div>'
+    }
+    function selectFormatter2_ctb(value,row,index) {
+        return '<div><a target="_blank" href="/api?action=start_model&web=ctb&model_username='+value+'"><i class="fa fa-play-circle" aria-hidden="true"></i></a><a target="_blank" href="/api?action=stop_model&web=ctb&model_username='+value+'"><i class="fa fa-stop-circle" aria-hidden="true"></i></a>  <a target="_blank" href="/api?action=delete_model&webs=ctb&model_username='+value+'"><i class="fa fa-ban" aria-hidden="true"></i></a></div>'
+    }
+
+    function loadmfc_bot(){
+        let good_info = [];
+        $.ajax({
+            method: "GET",
+            url: '/api?action=get_models&web=mfc',
+            success: function (data){
+                let dinfo = data['success'];
+                var i;
+                for (i = 0; i < dinfo.length; ++i) {
+                    // do something with `substr[i]`
+                    let cuserinfo = dinfo[i];
+                    console.log(cuserinfo);
+                    good_info.push({
+                        "model_username":cuserinfo[0],
+                        "status":cuserinfo[1],
+                        'working_proxies':cuserinfo[3],
+                        "proxies":cuserinfo[2],
+                        "actions":cuserinfo[0],
+                        "current_viewers":cuserinfo[4]
+                    })
+                }
+                if(fused===0){
+                    $table.bootstrapTable({data: good_info});
+                    fused=1;
+                    $('#m_connection').val(data['cgc']);
+                    $('#m_liveseconds').val(data['clt']);
+                }else{
+                    $table.bootstrapTable('load',good_info);
+                }
+            }
+        })
+    }
+    function loadctb_bot(){
+        let good_info = [];
+        $.ajax({
+            method: "GET",
+            url: '/api?action=get_models&web=ctb',
+            success: function (data){
+                let dinfo = data['success'];
+                var i;
+                for (i = 0; i < dinfo.length; ++i) {
+                    // do something with `substr[i]`
+                    let cuserinfo = dinfo[i];
+                    //console.log(cuserinfo);
+                    good_info.push({
+                        "model_username":cuserinfo[0],
+                        "status":cuserinfo[1],
+                        'working_proxies':cuserinfo[3],
+                        "proxies":cuserinfo[2],
+                        "actions":cuserinfo[0],
+                        "current_viewers":cuserinfo[4]
+                    })
+                }
+                if(fused_ctb===0){
+                    $table_ctb.bootstrapTable({data: good_info});
+                    fused_ctb=1;
+                    $('#m_connection').val(data['cgc']);
+                    $('#m_liveseconds').val(data['clt']);
+                }else{
+                    $table_ctb.bootstrapTable('load',good_info);
+                }
+
+            }});
+    }
+
+    $(document).ready( function () {
+        //setTimeout(loadtable,5*1000,'ctb');
+        //loadtable('ctb');
+        //loadtable('ctb');
+        //loadtable('ctb');
+        //loadtable('ctb');
+        //loadtable('ctb');
+        //loadmfc_bot();
+
+        loadctb_bot();
+        loadmfc_bot();
+
+        setInterval(loadmfc_bot,5*1000);
+        setInterval(loadctb_bot,5*1000);
+
+        $('body').on('change','.proxie_control', function () {
+            let current_proxies_text = $(this).val();
+            let current_model_selected = $(this).attr('segtype');
+            $.ajax({
+                method: 'GET',
+                url: '/api?action=add_new_model&web=mfc&model_username='+current_model_selected+'&proxies='+current_proxies_text,
+                success: function (data) {
+                    $('#alertbox_id_div').append('<div class="alert alert-default alert-dismissible fade show" role="alert">\n' +
+                        '        <span class="alert-icon"><i class="ni ni-like-2"></i></span>\n' +
+                        '        <span class="alert-text"><strong>Checking Proxies...</strong> this proccess takes around 1m each 30 proxies!</span>\n' +
+                        '        <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                        '            <span aria-hidden="true">&times;</span>\n' +
+                        '        </button>\n' +
+                        '    </div>')
+                }
+            });
+            //console.log([current_proxies_text,current_model_selected]);
+        });
+        $('body').on('change','.proxie_control2', function () {
+            let current_proxies_text = $(this).val();
+            let current_model_selected = $(this).attr('segtype');
+            $.ajax({
+                method: 'GET',
+                url: '/api?action=add_new_model&web=ctb&model_username='+current_model_selected+'&proxies='+current_proxies_text,
+                success: function (data) {
+                    $('#alertbox_id_div').append('<div class="alert alert-default alert-dismissible fade show" role="alert">\n' +
+                        '        <span class="alert-icon"><i class="ni ni-like-2"></i></span>\n' +
+                        '        <span class="alert-text"><strong>Checking Proxies...</strong> this proccess takes around 1m each 30 proxies!</span>\n' +
+                        '        <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                        '            <span aria-hidden="true">&times;</span>\n' +
+                        '        </button>\n' +
+                        '    </div>')
+                }
+            });
+            //console.log([current_proxies_text,current_model_selected]);
+        });
+        $('body').on('click','#button-addon2',function () {
+            let addnewmodel_username = $('#addmodel_username').val();
+            let addnewmodel_password = $('#addmodel_password').val();
+            $.ajax({
+                method:'GET',
+                url:'/api?action=add_new_model&web=mfc&model_username='+addnewmodel_username+'&proxies='+addnewmodel_password,
+                success:function (data) {
+                    alert('Success adding new model, wait until the proxies complete checking.');
+                }
+            })
+        });
+        $('body').on('change','#m_connection', function () {
+            $.ajax({
+                method: 'GET',
+                url: '/api?action=ug_tcpp&val='+$('#m_connection').val(),
+                success:function (data) {
+                    console.log(data);
+                }
+            })
+        });
+        $('body').on('change','#m_liveseconds',function () {
+            $.ajax({
+                method: 'GET',
+                url: '/api?action=ug_maxlivecon&val='+$('#m_liveseconds').val(),
+                success:function (data) {
+                    console.log(data);
+                }
+            })
+            // &val
+        });
+        //CHATURBATEPART
+        $('body').on('click','#button-addon2_CTB',function () {
+            let addnewmodel_username = $('#addmodel_username_CTB').val();
+            let addnewmodel_password = $('#addmodel_password_CTB').val();
+
+            $.ajax({
+                method:'GET',
+                url:'/api?action=add_new_model&web=ctb&model_username='+addnewmodel_username+'&proxies='+addnewmodel_password,
+                success:function (data) {
+                    alert('Success adding new model, wait until the proxies complete checking.');
+                }
+            })
+        });
+        $('body').on('change','#m_connection_CTB', function () {
+            $.ajax({
+                method: 'GET',
+                url: '/api?action=ug_tcpp&val='+$('#m_connection').val(),
+                success:function (data) {
+                    console.log(data);
+                }
+            })
+        });
+        $('body').on('change','#m_liveseconds_CTB',function () {
+            $.ajax({
+                method: 'GET',
+                url: '/api?action=ug_maxlivecon&val='+$('#m_liveseconds').val(),
+                success:function (data) {
+                    console.log(data);
+                }
+            })
+            // &val
+        });
+
+        //setInterval(loadtable,2*1000,'mfc');
+        //setInterval(loadtable,5*1000,'ctb');
+        //window.setInterval(10000,loadtable());
+        //setInterval(loadtable,5*1000);
+    });
+</script>

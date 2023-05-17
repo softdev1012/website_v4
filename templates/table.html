@@ -1,0 +1,234 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Sourcecode_Dev">
+    <title>TrakTheHerd</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+
+
+</head>
+<div class="table-responsive">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div>
+        <style>
+            .hover {
+
+            }
+        </style>
+        <link href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
+
+        <table id="myTable" data-toggle="myTable" data-flat="true" data-search="true" data-url="/api?action=gtable" class="table align-items-center table-dark ">
+            <thead class="thead-dark">
+            <style>
+
+            </style>
+            <tr>
+                <th data-field="success[0]" id="c1" scope="col" class="square sort header text-right" data-sort="string" style="position:relative;">
+                    <input style="width: 90px;" id="symbolsearch" type="text" class="form-control" placeholder="Symbol">
+                    <div class="dropdown dp1" style="position: absolute; top: 15px;right: 0;display: none;">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                    </div>
+                </th>
+                <th data-sort="int" style="position:relative;" scope="col" class="sort header square" >
+                    <div class="dropdown dp1" style="position: absolute; top: 10px;right: 0;display: none;">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                    </div>
+                    <div class="input-group" id="maxminr" style="width: 150px;">
+                        <input id="minnumid" type="text" placeholder="min" aria-label="First name" class="form-control">
+                        <input id="maxnumid" type="text" placeholder="max" aria-label="Last name" class="form-control">
+                    </div>
+                </th>
+                <th scope="col" class="square sort header" data-sort="string">
+                    <div class="dropdown dp1" style="position: absolute; top: 15px;right: 0;display: none;">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                    </div>
+                    <select class="form-control" id="seldates" style="width: 120px;">
+                        <option>Today</option>
+                        <option>Week</option>
+                        <option>Month</option>
+                    </select>
+                </th>
+                <th scope="col" class="header square" data-sort="string">
+                    Compare by <select class=" form-control" id="seldatesw" style="width: 120px;">
+                    <option>Yesterday</option>
+                    <option>Week</option>
+                    <option>Month</option>
+                </select>
+                    <div class="dropdown dp1" style="position: absolute; top: 15px;right: 0;display: none;">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                    </div>
+                </th>
+                <!--<th scope="col" class="sort header" data-sort="completion">Completion</th>-->
+                <th scope="col" class="header"></th>
+                <th scope="col" class="header"></th>
+            </tr>
+            </thead>
+            <tbody class="list" id="wordlisttable">
+
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+</div>
+<!-- Argon Scripts -->
+<!-- Core -->
+<script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<!-- Argon JS -->
+<script src="../assets/js/argon.js?v=1.2.0"></script>
+
+<script type="text/javascript" src="http://www.bacubacu.com/colresizable/js/colResizable-1.5.min.js"></script>
+<style>
+
+</style>
+
+
+
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+    } );
+</script>
+<script>
+    /*
+    $('#myTable').colResizable({
+        liveDrag: true,
+        gripInnerHtml:"<div class='grip'></div>",
+        draggingClass:"dragging",
+        //onResize:onSampleResized
+    });
+    */
+
+
+
+
+    $.ajax({
+        url : '/api?action=gtable',
+        type : 'GET',
+        success : function(data) {
+            //console.log('Data: '+);
+            //console.log('Data: '+);
+            //console.log(data);
+            //console.log(data);
+            let dinfo = data['success'];
+            //let currdate = $('#seldates').val();
+
+            $("#wordlisttable tr").remove();
+            var i;
+            for (i = 0; i < dinfo.length; ++i) {
+                // do something with `substr[i]`
+                let cuserinfo = dinfo[i];
+                //let cuserinfo10 = dinfo[i][1];
+                //let populate_color = cuserinfo10[2];
+                //let popocol = '';
+
+                //if(String(populate_color).includes('-')===true){
+                //    popocol = '<td style="color: red">'+cuserinfo10[2]+'</td>';
+                //}else{
+                //    popocol = '<td style="color: #0a5d00">'+cuserinfo10[2]+'</td>';
+                //}
+
+                //console.log(popocol);
+
+                /*if(cuserinfo[2]===currdate){
+
+                }*/
+                $('#wordlisttable').append('' +
+                    '<tr>\n' +
+                    '                <th scope="row">\n' +
+                    '                    <div class="media align-items-center">\n' +
+                    '                        <div class="media-body">\n' +
+                    '                            <span class="name mb-0 text-sm">'+cuserinfo[0]+'</span>\n' +
+                    '                        </div>\n' +
+                    '                    </div>\n' +
+                    '                </th>\n' +
+                    '                <td class="budget">'+cuserinfo[1]+'</td>\n' +
+                    //'                <td class="status">'+cuserinfo[2]+'</td>\n' +
+                    '                <th scope="row" >aqui mismo1</th>\n'+
+                    '                <th scope="row" >aqui mismo2</th>\n'+
+                    '                <th scope="row" >aqui mismo3</th>\n'+
+                    '                <th scope="row" >aqui mismo4</th>\n'+
+                    '            </tr>')
+            }
+        }});
+
+    $(document).on('mouseenter','.square',function() {
+        $(this).css('background-color','red');
+        $(this).find('.dp1').css('display','block');
+        //background-color:red;
+    });
+    $(document).on('mouseleave','.square',function() {
+        $(this).css('background-color','#1c345d');
+        $(this).find('.dp1').css('display','none');
+    });
+
+    function sortTable(table, col, reverse) {
+        var tb = table.tBodies[0], // use `<tbody>` to ignore `<thead>` and `<tfoot>` rows
+            tr = Array.prototype.slice.call(tb.rows, 0), // put rows into array
+            i;
+        reverse = -((+reverse) || -1);
+        tr = tr.sort(function (a, b) { // sort rows
+            return reverse // `-1 *` if want opposite order
+                * (a.cells[col].textContent.trim() // using `.textContent.trim()` for test
+                        .localeCompare(b.cells[col].textContent.trim())
+                );
+        });
+        for(i = 0; i < tr.length; ++i) tb.appendChild(tr[i]); // append each row in order
+    }
+    //var table = new Tabulator("#myTable", {});
+
+    //sortTable($('#myTable tbody'),1,true);
+
+
+    //$(document).on('click','.dp1', function () {
+
+    //})
+</script>
