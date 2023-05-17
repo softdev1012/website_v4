@@ -1,5 +1,5 @@
 import websocket,threading,json,time,requests,random,urllib.parse,bs4,string
-from backend import check_pings
+from backend import check_pings, check_cd, check_lt, get_active_list
 s = requests.session()
 s.verify = False
 ids=str(int(time.time()))+str(random.randint(0,900))
@@ -84,8 +84,8 @@ def connect_room(model_username,ROOMID,proxy_to_use):
                 if proxy_to_use == '1':
                     ws.send('51 {} 0 {} 9\n\0'.format(websocket_id_room, ROOMID))
                 else:
-                    allinf2 = json.loads(requests.get('http://localhost/api?action=get_models&web=mfc').text)
-                    for ele in allinf2['success']:
+                    allinf2 = get_active_list() #json.loads(requests.get('http://localhost/api?action=get_models&web=mfc').text)
+                    for ele in allinf2:
                         if ele[0] == model_username:
                             if ele[1] == 'run':
                                 ws.send('51 {} 0 {} 9\n\0'.format(websocket_id_room, ROOMID))
@@ -119,8 +119,8 @@ def connect_room(model_username,ROOMID,proxy_to_use):
                     int(time.time())), bid))
             while True:
                 'check by server'
-                allinfo = json.loads(requests.get('http://localhost/api?action=get_models&web=mfc').text)
-                for ele in allinfo['success']:
+                allinfo = get_active_list() # json.loads(requests.get('http://localhost/api?action=get_models&web=mfc').text)
+                for ele in allinfo:
                     if ele[0] == model_username:
                         if ele[1] == 'stop':
                             ws.close()
@@ -159,13 +159,13 @@ def connect_room(model_username,ROOMID,proxy_to_use):
 def start_bot(model_username, MAX_PER_CONNECTION,direct=False):
     if direct == True:
         ROOMID = get_model_idv2(model_username)
-        roomtotal = json.loads(requests.get('http://localhost/api?action=get_models&web=mfc'))['cgc']
+        roomtotal = check_cd()    #json.loads(requests.get('http://localhost/api?action=get_models&web=mfc'))['cgc']
         for i in range(int(roomtotal)):
             threading.Thread(target=connect_room, args=(model_username, ROOMID, '1')).start()
             print('STARTED > {}'.format(str(i)))
             time.sleep(1)
     else:
-        for ele in json.loads(requests.get('http://localhost/api?action=get_models&web=mfc').text)['success']:
+        for ele in get_active_list(): #json.loads(requests.get('http://localhost/api?action=get_models&web=mfc').text)['success']:
             if ele[0] == model_username:
                 if ele[1] == 'run':
                     ROOMID = get_model_idv2(model_username)

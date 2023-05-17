@@ -289,5 +289,20 @@ def delete_model(model_username, webs):
             if ele['model'] == model_username:
                 db_running_ctb.delete_one({'_id':ele['_id']})
                 print('success delete')
+def get_active_list():
+    res = [[x['model'], x['status'], ','.join(x['proxy']), str(len(x['proxy']))] for x in get_all_active(modweh)]
+    res3 = get_model_lives()
+    res5 = []
+    for mod in res:
+        found = False
+        for ele3 in res3.items():
+            if mod[0] == ele3[0]:
+                mod.append(ele3[1])
+                res5.append(mod)
+                found = True
+        if found == False:
+            mod.append(0)
+            res5.append(mod)
+    return res5
 
 'CHATURBATE_PART'
