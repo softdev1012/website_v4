@@ -137,8 +137,8 @@ def connect_room(model_username,ROOMID,proxy_to_use):
         ws.send('1 0 0 20071025 0 1/guest:guest\n\0')
         time.sleep(3)
 
-        threading.Thread(target=wssend).start()
-        threading.Thread(target=apisend).start()
+        # threading.Thread(target=wssend).start()
+        # threading.Thread(target=apisend).start()
 
     websocket.enableTrace(False)
     chat_servers = [74, 75, 67, 14, 16, 17, 18, 19, 42, 5, 7, 8, 10, 11, 12, 13, 15, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 41, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 68, 69, 70, 71, 72, 73]
