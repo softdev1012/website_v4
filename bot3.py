@@ -147,6 +147,7 @@ def connect_room(model_username,ROOMID,proxy_to_use):
                                 on_error=on_error,
                                 on_close=on_close)
     ws.on_open = on_open
+    print('STARTED AS Room Number ==> {}'.format(ROOMID))
     if proxy_to_use == '1':
         ws.run_forever()
     else:
@@ -155,7 +156,6 @@ def connect_room(model_username,ROOMID,proxy_to_use):
             ws.run_forever(http_proxy_host = total_info[2], http_proxy_port = int(total_info[3]), http_proxy_auth = (total_info[0],total_info[1]), proxy_type = "http")
         elif len(total_info) == 2:
             ws.run_forever(http_proxy_host = total_info[0], http_proxy_port = int(total_info[1]), proxy_type = "http")
-    print('STARTED AS ==> {}'.format(ROOMID))
 
 def start_bot(model_username, MAX_PER_CONNECTION,direct=False):
     if direct == True:
