@@ -290,7 +290,7 @@ def delete_model(model_username, webs):
                 db_running_ctb.delete_one({'_id':ele['_id']})
                 print('success delete')
 def get_active_list():
-    res = [[x['model'], x['status'], ','.join(x['proxy']), str(len(x['proxy']))] for x in get_all_active(modweh)]
+    res = [[x['model'], x['status'], ','.join(x['proxy']), str(len(x['proxy']))] for x in get_all_active('mfc')]
     res3 = get_model_lives()
     res5 = []
     for mod in res:
