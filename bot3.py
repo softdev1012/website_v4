@@ -79,7 +79,7 @@ def connect_room(model_username,ROOMID,proxy_to_use):
                     print('LOGGED IN AS > {}'.format(message1['nm']))
                     # jroom()
 
-            # print(message1)
+            print(message1)
             def jroom():
                 if proxy_to_use == '1':
                     ws.send('51 {} 0 {} 9\n\0'.format(websocket_id_room, ROOMID))
@@ -136,6 +136,7 @@ def connect_room(model_username,ROOMID,proxy_to_use):
         ws.send('fcsws_20180422\n\0')
         ws.send('1 0 0 20071025 0 1/guest:guest\n\0')
         time.sleep(3)
+        print("Websocket is Opened.")
 
         # threading.Thread(target=wssend).start()
         # threading.Thread(target=apisend).start()
@@ -147,7 +148,7 @@ def connect_room(model_username,ROOMID,proxy_to_use):
                                 on_error=on_error,
                                 on_close=on_close)
     ws.on_open = on_open
-    print('STARTED AS Room Number ==> {}'.format(ROOMID))
+    print('STARTED AS Room Number ==> {}  with proxy ==> {}'.format(ROOMID, proxy_to_use))
     if proxy_to_use == '1':
         ws.run_forever()
     else:
