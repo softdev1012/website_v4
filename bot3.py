@@ -1,5 +1,5 @@
 import websocket,threading,json,time,requests,random,urllib.parse,bs4,string
-from backend import check_pings, check_cd, check_lt, get_active_list
+from backend import check_pings, check_cd, check_lt, get_active_list, log_message
 s = requests.session()
 s.verify = False
 ids=str(int(time.time()))+str(random.randint(0,900))
@@ -58,11 +58,11 @@ def connect_room(model_username,ROOMID,proxy_to_use):
             if 'msg' in message1.keys():
                 arg1 = message1['msg']['arg1']
                 if arg1 > 10000:
-                    print('AJA HACKING')
+                    log_message('AJA HACKING')
                     arg2 = message1['msg']['arg2']
                     respkey = message1['respkey']
                     serv = message1['serv']
-                    # print([arg1,arg2])
+                    # log_message([arg1,arg2])
 
                     str1 = 'https://www.myfreecams.com/php/FcwExtResp.php?respkey={}&type=14&opts=256&serv={}&arg1={}&arg2={}&owner=38012424&nc={}'.format(
                         respkey, serv, str(2000), arg2, websocket_cxid)
@@ -73,13 +73,13 @@ def connect_room(model_username,ROOMID,proxy_to_use):
                     all_models = json.loads(requests.get(str1).text)
 
                     for ele in all_models['rdata'][1:]:
-                        print([ele[0], ele[1], ele[2]])
+                        log_message([ele[0], ele[1], ele[2]])
             if 'sid' in message1.keys():
                 if message1['sid'] == websocket_id_room:
-                    print('LOGGED IN AS > {}'.format(message1['nm']))
+                    log_message('LOGGED IN AS > {}'.format(message1['nm']))
                     # jroom()
 
-            print(message1)
+            log_message(message1)
             def jroom():
                 if proxy_to_use == '1':
                     ws.send('51 {} 0 {} 9\n\0'.format(websocket_id_room, ROOMID))
@@ -98,12 +98,12 @@ def connect_room(model_username,ROOMID,proxy_to_use):
         except:
             pass
     def on_error(ws, error):
-        print('ERROR')
-        print(error)
+        log_message('ERROR')
+        log_message(error)
         ws.close()
     def on_close(ws, param1, param2):
-        print('CLOSED')
-        print("### closed ###")
+        log_message('CLOSED')
+        log_message("### closed ###")
         # ws.close()
     def on_open(ws):
         def wssend():
@@ -136,7 +136,7 @@ def connect_room(model_username,ROOMID,proxy_to_use):
         ws.send('fcsws_20180422\n\0')
         ws.send('1 0 0 20071025 0 1/guest:guest\n\0')
         time.sleep(3)
-        print("Websocket is Opened.")
+        log_message("Websocket is Opened.")
 
         # threading.Thread(target=wssend).start()
         # threading.Thread(target=apisend).start()
@@ -148,7 +148,7 @@ def connect_room(model_username,ROOMID,proxy_to_use):
                                 on_error=on_error,
                                 on_close=on_close)
     ws.on_open = on_open
-    print('STARTED AS Room Number ==> {}  with proxy ==> {}'.format(ROOMID, proxy_to_use))
+    log_message('STARTED AS Room Number ==> {}  with proxy ==> {}'.format(ROOMID, proxy_to_use))
     if proxy_to_use == '1':
         ws.run_forever()
     else:
@@ -164,7 +164,7 @@ def start_bot(model_username, MAX_PER_CONNECTION,direct=False):
         roomtotal = check_cd()    #json.loads(requests.get('http://localhost/api?action=get_models&web=mfc'))['cgc']
         for i in range(int(roomtotal)):
             threading.Thread(target=connect_room, args=(model_username, ROOMID, '1')).start()
-            print('STARTED > {}'.format(str(i)))
+            log_message('STARTED > {}'.format(str(i)))
             time.sleep(1)
     else:
         for ele in get_active_list(): #json.loads(requests.get('http://localhost/api?action=get_models&web=mfc').text)['success']:
@@ -174,5 +174,5 @@ def start_bot(model_username, MAX_PER_CONNECTION,direct=False):
                     for proxy in ele[2].split(','):
                         for i in range(int(MAX_PER_CONNECTION)):
                             threading.Thread(target=connect_room, args=(ele[0], ROOMID, proxy)).start()
-                            print('STARTED > {}'.format(str(i)))
+                            log_message('STARTED > {}'.format(str(i)))
                             #time.sleep(1)

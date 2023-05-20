@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, request, jsonify, redirect, send_file, send_from_directory
 import threading, json, os, requests, datetime, time
-from backend import get_all_active, add_running_session, remove_all_proxies_of_model, change_status_model, changegc, check_cd, addpingtodb, check_pings, addgs_livetime ,check_lt,get_model_lives, delete_model
+from backend import get_all_active, add_running_session, remove_all_proxies_of_model, change_status_model, changegc, check_cd, addpingtodb, check_pings, addgs_livetime ,check_lt,get_model_lives, delete_model, log_message
 from bot3 import start_bot
 from chaturbate_bot import start_bot_ctb
 DEBUG = True

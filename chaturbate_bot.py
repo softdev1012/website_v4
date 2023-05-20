@@ -1,5 +1,5 @@
 import requests, json, time, bs4, re,random,string,websocket, threading
-from backend import check_pings
+from backend import check_pings, log_message
 s = requests.session()
 s.verify = False
 
@@ -41,19 +41,19 @@ def connect_room_cb(username_room,proxy):
     })
     res2 = parser(0, [url.text,username_room])
     def on_message(ws, message):
-        print('MESSAGE')
-        print(message)
+        log_message('MESSAGE')
+        log_message(message)
         # ces = getcurrent_status()
         # if ces == False:
-        #    print('Finishing....')
+        #    log_message('Finishing....')
         #    ws.close()
     def on_error(ws, error):
-        print('ERROR')
-        print(error)
+        log_message('ERROR')
+        log_message(error)
         ws.close()
     def on_close(ws):
-        print('CLOSED')
-        print("### closed ###")
+        log_message('CLOSED')
+        log_message("### closed ###")
         # ws.close()
     def on_open(ws):
         def apisend():
@@ -85,7 +85,7 @@ def connect_room_cb(username_room,proxy):
             apisend()
             # time.sleep(15)
             # ws.close()
-            # print("thread terminating...")
+            # log_message("thread terminating...")
 
 
 
