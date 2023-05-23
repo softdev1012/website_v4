@@ -308,7 +308,7 @@ def get_active_list():
 def log_message(result):
     file1 = open("log.txt", "a")
     print(result)
-    result = repr(result) + '\n'
+    result = time.strftime("%H:%M:%S") + " --> " repr(result) + '\n'
     file1.write(result)
     file1.close()
 

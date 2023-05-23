@@ -109,7 +109,7 @@ def connect_room(model_username,ROOMID,proxy_to_use):
         def wssend():
             while True:
                 ws.send('0 0 0 0 0\n\0')
-                log_message(time.strftime("%H:%M:%S"), ' => 0 0 0 0 0\n\0')
+                log_message('0 0 0 0 0\n\0')
                 time.sleep(30)
 
         def apisend():
