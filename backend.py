@@ -307,7 +307,7 @@ def get_active_list():
 
 def log_message(string):
     file1 = open("log.txt", "a")
-    file1.write(string)
+    file1.write(string, '\n')
     print(string)
     file1.close()
 
