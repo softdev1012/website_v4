@@ -305,10 +305,11 @@ def get_active_list():
             res5.append(mod)
     return res5
 
-def log_message(string):
+def log_message(result):
     file1 = open("log.txt", "a")
-    file1.write(string, '\n')
-    print(string)
+    print(result)
+    result = repr(result) + '\n'
+    file1.write(result)
     file1.close()
 
 'CHATURBATE_PART'
