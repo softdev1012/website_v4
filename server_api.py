@@ -28,6 +28,10 @@ def form_post():
        UserToken = request.form.to_dict()
     elif request.method == 'GET':
         return render_template('index.html')
+
+@app.route('/getlog', methods=['GET', 'POST'])
+def get_log():
+    return send_from_directory(directory='./', filename='Log.txt', as_attachment=True)
 @app.route('/api', methods=['GET', 'POST'])
 def apiserver():
     if request.method == 'GET':

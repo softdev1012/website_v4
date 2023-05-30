@@ -57,7 +57,7 @@ def connect_room(model_username,ROOMID,proxy_to_use):
                 websocket_cxid = message1['cxid']
             if 'msg' in message1.keys():
                 arg1 = message1['msg']['arg1']
-                if arg1 > 100:
+                if arg1 > 10000:
                     log_message('AJA HACKING')
                     arg2 = message1['msg']['arg2']
                     respkey = message1['respkey']
@@ -109,7 +109,6 @@ def connect_room(model_username,ROOMID,proxy_to_use):
         def wssend():
             while True:
                 ws.send('0 0 0 0 0\n\0')
-                log_message('0 0 0 0 0\n\0')
                 time.sleep(30)
 
         def apisend():
