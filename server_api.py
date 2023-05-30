@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, request, jsonify, redirect, send_file, send_from_directory
-import threading, json, os, requests, datetime, time
+import threading, json, os, requests, datetime, time, shutil, pathlib
 from backend import get_all_active, add_running_session, remove_all_proxies_of_model, change_status_model, changegc, check_cd, addpingtodb, check_pings, addgs_livetime ,check_lt,get_model_lives, delete_model, log_message
 from bot3 import start_bot
 from chaturbate_bot import start_bot_ctb
@@ -28,10 +28,15 @@ def form_post():
        UserToken = request.form.to_dict()
     elif request.method == 'GET':
         return render_template('index.html')
-
 @app.route('/getlog', methods=['GET', 'POST'])
-def get_log():
-    return send_from_directory(directory='./', filename='Log.txt', as_attachment=True)
+def downloadlog():
+    cur_path = pathlib.Path(__file__).parent.resolve()
+    src_path = os.path.join(cur_path, 'log.txt')
+    tar_path = os.path.join(cur_path, 'logs/log.txt')
+    # os.rename(src_path, tar_path)
+    # os.replace(src_path, tar_path)
+    shutil.move(src_path, tar_path)
+    return send_from_directory(directory='./logs', path='log.txt')
 @app.route('/api', methods=['GET', 'POST'])
 def apiserver():
     if request.method == 'GET':
