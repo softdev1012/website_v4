@@ -31,6 +31,7 @@ def get_model_idv2(username):
         'Cache-Control': 'max-age=0'
     })
     ftag = parser(2, url2.text)
+    log_message(ftag)
     return ftag
 def generaterandomstring(num):
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=num))
@@ -154,13 +155,25 @@ def connect_room(model_username,ROOMID,proxy_to_use):
     ws.on_open = on_open
     log_message('STARTED AS Room Number ==> {}  with proxy ==> {}'.format(ROOMID, proxy_to_use))
     if proxy_to_use == '1':
-        ws.run_forever()
+        while True:
+            log_message('Set start from here.')
+            ws.run_forever()
+            time.sleep(60)
+            ws.close()
     else:
         total_info = proxy_to_use.split(':')
         if len(total_info) == 4:
-            ws.run_forever(http_proxy_host = total_info[2], http_proxy_port = int(total_info[3]), http_proxy_auth = (total_info[0],total_info[1]), proxy_type = "http")
+            while True:
+                log_message('Set start from here.')
+                ws.run_forever(http_proxy_host = total_info[2], http_proxy_port = int(total_info[3]), http_proxy_auth = (total_info[0],total_info[1]), proxy_type = "http")
+                time.sleep(60)
+                ws.close()
         elif len(total_info) == 2:
-            ws.run_forever(http_proxy_host = total_info[0], http_proxy_port = int(total_info[1]), proxy_type = "http")
+            while True:
+                log_message('Set start from here.')
+                ws.run_forever(http_proxy_host = total_info[0], http_proxy_port = int(total_info[1]), proxy_type = "http")
+                time.sleep(60)
+                ws.close()
 
 def start_bot(model_username, MAX_PER_CONNECTION,direct=False):
     if direct == True:
