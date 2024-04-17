@@ -251,12 +251,6 @@ def addgs_livetime(change):
 def check_lt():
     return int([x for x in db_global_settings_live.find()][-1]['max_live'])
 
-
-
-def addpingtodb(botid,lping,modeluser):
-    db_ping.insert_one({'botid': botid,
-                        'last_ping': lping,
-                        'model_username': modeluser})
 def check_pings(direct_result=False):
     appworking_good = []
     for ele in [x for x in db_ping.find()]:
@@ -272,6 +266,12 @@ def check_pings(direct_result=False):
                 return True
         return False
     return appworking_good
+
+def addpingtodb(botid,lping,modeluser):
+    db_ping.insert_one({'botid': botid,
+                        'last_ping': lping,
+                        'model_username': modeluser})
+
 def get_model_lives():
     cpings = check_pings()
     res3 = Counter(x['model_username'] for x in cpings)
@@ -308,7 +308,7 @@ def get_active_list():
 def log_message(result):
     file1 = open("log.txt", "a")
     print(result)
-    result = time.strftime("%H:%M:%S") + " --> " + repr(result) + '\n'
+    result = time.strftime("%H:%M:%S") + " ---> " + repr(result) + '\n'
     file1.write(result)
     file1.close()
 

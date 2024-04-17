@@ -98,14 +98,15 @@ def connect_room(model_username,ROOMID,proxy_to_use):
             #apisend()
         except:
             pass
-    def on_error(ws, error):
-        log_message('ERROR')
-        log_message(error)
-        ws.close()
     def on_close(ws, param1, param2):
         log_message('CLOSED')
         log_message("### closed ###")
         # ws.close()
+    def on_error(ws, error):
+        log_message('ERROR')
+        log_message(error)
+        ws.close()
+    
     def on_open(ws):
         def wssend():
             while True:

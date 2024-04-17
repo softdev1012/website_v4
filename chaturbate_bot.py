@@ -43,10 +43,10 @@ def connect_room_cb(username_room,proxy):
     def on_message(ws, message):
         log_message('MESSAGE')
         log_message(message)
-        # ces = getcurrent_status()
-        # if ces == False:
-        #    log_message('Finishing....')
-        #    ws.close()
+        ces = getcurrent_status()
+        if ces == False:
+           log_message('Finishing....')
+           ws.close()
     def on_error(ws, error):
         log_message('ERROR')
         log_message(error)
